@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>FPPRO iPhone Model Numarası Kontrol Paneli</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2471A3; /* Orta koyulukta bir mavi tonu */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 80px;
+    }
+
+    .logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 30px;
+      font-size: 22px;
+      font-weight: normal;
+      color: #f0f0f0;
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 1px solid #666;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .supported {
+      background-color: rgba(40, 167, 69, 0.8);
+    }
+
+    .unsupported {
+      background-color: rgba(220, 53, 69, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img src="https://fpprotr.com/wp-content/uploads/2023/04/fppro-logo-symbol-white-nosubtitle.png" alt="FPPRO Logo" class="logo">
+
+  <!-- Başlık -->
+  <h2>iPhone Model Numarası Kontrol Paneli</h2>
+
+  <!-- Giriş -->
+  <input type="text" id="modelInput" placeholder="Model numarasını girin (örn. A2211)">
+  <div id="result" class="result"></div>
+
+  <script>
+    const supportedModels = [
+      "A2211", "A2215", "A2218", "A2399", "A2403", "A2407",
+      "A2411", "A2628", "A2633", "A2638", "A2643", "A3090",
+      "A3094", "A3102", "A3106", "A2296", "A2783"
+    ];
+
+    const input = document.getElementById("modelInput");
+    const resultDiv = document.getElementById("result");
+
+    input.addEventListener("input", function () {
+      const model = input.value.trim().toUpperCase();
+      if (!model) {
+        resultDiv.textContent = "";
+        resultDiv.className = "result";
+        return;
+      }
+
+      if (supportedModels.includes(model)) {
+        resultDiv.textContent = "Destekli";
+        resultDiv.className = "result supported";
+      } else {
+        resultDiv.textContent = "Desteksiz";
+        resultDiv.className = "result unsupported";
+      }
+    });
+  </script>
+
+</body>
+</html>
